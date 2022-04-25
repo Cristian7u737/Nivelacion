@@ -1,0 +1,31 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required [(ngModel)]="alumno.nombre" name="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="apellido_p">Apellido_p</label>
+                <input class="form-control" id="apellido_p" required [(ngModel)]="alumno.apellido_p" name="apellido_p" />
+            </div>
+            <div class="form-group">
+                <label for="apellido_m">Apellido_m</label>
+                <input class="form-control" id="apellido_m" required [(ngModel)]="alumno.apellido_m" name="apellido_m" />
+            </div>
+            <div class="form-group">
+                <label for="matricula">Matricula</label>
+                <input class="form-control" id="matricula" required [(ngModel)]="alumno.matricula" name="matricula" />
+            </div>
+            <div class="form-group">
+                <label for="carrera">Carrera</label>
+                <input class="form-control" id="carrera" required [(ngModel)]="alumno.carrera" name="carrera" />
+            </div>
+            <button (click)="saveTutorial()" class="btn btn-success">Submit</button>
+        </div>
+        <div *ngIf="submitted">
+            <h4>Student was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newAlumno()">Add</button>
+        </div>
+    </div>
+</div>

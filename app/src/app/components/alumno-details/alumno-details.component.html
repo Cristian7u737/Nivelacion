@@ -1,0 +1,65 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentAlumno.alumno_id">
+        <h4>Alumno</h4>
+        <div>
+            <label><strong>Nombre:</strong></label> {{ currentAlumno.nombre }}
+        </div>
+        <div>
+            <label><strong>Apellido_p:</strong></label> {{ currentAlumno.apellido_p }}
+        </div>
+        <div>
+            <label><strong>Apellido_m:</strong></label> {{ currentAlumno.apellido_m }}
+        </div>
+        <div>
+            <label><strong>Matricula:</strong></label> {{ currentAlumno.matricula }}
+        </div>
+        <div>
+            <label><strong>Carrera:</strong></label> {{ currentAlumno.carrera }}
+        </div>
+        <a class="badge badge-warning" routerLink="/alumnos/{{ currentAlumno.alumno_id }}">
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentAlumno">
+        <br />
+        <p>Please click on a Student...</p>
+    </div>
+</div>
+<ng-template #editable>
+    <div *ngIf="currentAlumno.alumno_id" class="edit-form">
+        <h4>Student</h4>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="currentAlumno.nombre" name="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="apellido_p">Apellido_p</label>
+                <input type="text" class="form-control" id="apellido_p" [(ngModel)]="currentAlumno.apellido_p" name="apellido_p" />
+            </div>
+            <div class="form-group">
+                <label for="apellido_m">Apellido_m</label>
+                <input type="text" class="form-control" id="apellido_m" [(ngModel)]="currentAlumno.apellido_m" name="apellido_m" />
+            </div>
+            <div class="form-group">
+                <label for="matricula">Matricula</label>
+                <input type="text" class="form-control" id="matricula" [(ngModel)]="currentAlumno.matricula" name="matricula" />
+            </div>
+            <div class="form-group">
+                <label for="carrera">Carrera</label>
+                <input type="text" class="form-control" id="carrera" [(ngModel)]="currentAlumno.carrera" name="carrera" />
+            </div>
+        </form>
+        <button class="badge badge-danger mr-2" (click)="deleteAlumno()">
+        Delete
+      </button>
+        <button type="submit" class="badge badge-success mb-2" (click)="updateAlumno()">
+        Update
+      </button>
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentAlumno.alumno_id">
+        <br />
+        <p>Cannot access this Student...</p>
+    </div>
+</ng-template>
